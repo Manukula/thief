@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thief</title>
+
+<style>
+  body {
+    background-color: #f8f5f0;
+    font-family: Georgia, serif;
+    color: #2e2a27;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;  
+    margin: 0;
+    text-align: center;
+    user-select: none;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+  }
+
+  #playBtn {
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    background-color: #6b5b4b;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 30px;
+    transition: background 0.3s;
+  }
+
+  #playBtn:hover {
+    background-color: #3e2f20;
+  }
+
+  .book {
+    background-color: #fffdf8;
+    padding: 60px 80px;
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
+    border: 1px solid #e3ded7;
+    border-radius: 8px;
+    position: relative;
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
+    display: none;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    margin-bottom: 40px;
+    color: #5a4633;
+    text-transform: lowercase;
+  }
+
+  p {
+    white-space: pre-line;
+    line-height: 1.8;
+    font-size: 1.05rem;
+    text-align: left;
+    text-align: center;
+    
+  }
+
+  .author {
+    text-align: right;
+    margin-top: 40px;
+    font-style: italic;
+    color: #6b5b4b;
+  }
+
+  .page-number {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 0.9rem;
+    color: #9b8b7a;
+  }
+
+  .nav-buttons {
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .nav-buttons button {
+    background: none;
+    border: none;
+    color: #6b5b4b;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  .nav-buttons button:hover {
+    color: #3e2f20;
+  }
+
+  .click-hint {
+    margin-top: 20px;
+    color: #b1a393;
+    animation: blink 1.5s infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+
+  @media (max-width: 700px) {
+    .book {
+      padding: 35px 25px;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <button id="playBtn">🎵 Play Music & Read Poem</button>
+
+  <!-- PAGE 1 -->
+  <div class="book" id="page1">
+    <h1>thief</h1>
+
+    <p>
+      <br>
+How does it feel to be a thief.
+To steal a heart that is
+locked away somewhere quiet,
+somewhere safe,
+somewhere secret,
+and yet a crime is not committed.
+
+How does it feel to walk free
+with something that was never yours,
+while I serve the sentence of remembering.
+
+Remembering.
+
+How did it feel to live unbothered,
+knowing you linger in my mind,
+like a broken record spinning endlessly,
+stuck on the same fragile line,
+repeating the same part of the song.
+    </p>
+
+    <div class="page-number">Page 1</div>
+  </div>
+
+  <!-- PAGE 2 -->
+  <div class="book" id="page2">
+    <h1>thief</h1>
+
+    <p>
+      <br>
+      <br>
+I have seen too much,
+I feel too much,
+I heard too much,
+and yet I don't know
+that much.
+
+Tell me,
+
+Do thieves ever lose sleep,
+or is it only the robbed
+who lie awake at night?
+
+I mean, I don't mind.
+
+Never felt so safe
+in the hands of the thief
+who came and robbed me
+in my own hood.
+
+A precious treasure
+that I never really valued
+until it went missing,
+and I was left with nothing
+but the memory of it.
+    </p>
+
+    <div class="page-number">Page 2</div>
+  </div>
+
+  <!-- PAGE 3 -->
+  <div class="book" id="page3">
+    <h1>thief</h1>
+
+    <p>
+      <br>
+Maybe that is the cruelest part.
+
+Not that you took something,
+but that I never knew that i had it.
+
+You walked away untouched,
+while I searched empty rooms
+for echoes of what once lived there.
+
+And still,
+if you came back tomorrow,
+I would not ask for it back.
+
+I would only ask
+if you ever felt its weight
+in your hands.
+    </p>
+
+    <div class="author">— Anonymous</div>
+    <div class="page-number">Page 3</div>
+  </div>
+
+  <div class="nav-buttons">
+    <button id="prevBtn" style="display:none;">← Previous</button>
+    <button id="nextBtn" style="display:none;">Next →</button>
+  </div>
+
+  <div class="click-hint">
+    (click the button to play music & start reading 🎵)
+  </div>
+
+</div>
+
+<audio id="bgMusic" src="Alex Warren - Ordinary (Lyrics) - 7clouds.mp3" loop></audio>
+
+<script>
+const audio = document.getElementById('bgMusic');
+const playBtn = document.getElementById('playBtn');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+
+let currentPage = 1;
+let started = false;
+
+function fadeInAudio(audioElement) {
+  audioElement.volume = 0;
+
+  const fade = setInterval(() => {
+    if (audioElement.volume < 1) {
+      audioElement.volume = Math.min(
+        1,
+        audioElement.volume + 0.05
+      );
+    } else {
+      clearInterval(fade);
+    }
+  }, 200);
+}
+
+function showPage(pageNumber) {
+  document.querySelectorAll('.book').forEach(page => {
+    page.style.display = 'none';
+    page.style.opacity = '0';
+  });
+
+  const page = document.getElementById(`page${pageNumber}`);
+
+  page.style.display = 'block';
+
+  requestAnimationFrame(() => {
+    page.style.opacity = '1';
+  });
+
+  currentPage = pageNumber;
+
+  prevBtn.style.display =
+    currentPage === 1 ? 'none' : 'inline-block';
+
+  nextBtn.style.display =
+    currentPage === 3 ? 'none' : 'inline-block';
+}
+
+playBtn.addEventListener('click', () => {
+  if (!started) {
+    audio.play()
+      .then(() => fadeInAudio(audio))
+      .catch(err => console.log(err));
+
+    started = true;
+
+    playBtn.style.display = 'none';
+
+    prevBtn.style.display = 'none';
+    nextBtn.style.display = 'inline-block';
+
+    showPage(1);
+  }
+});
+
+nextBtn.addEventListener('click', () => {
+  if (currentPage < 3) {
+    showPage(currentPage + 1);
+  }
+});
+
+prevBtn.addEventListener('click', () => {
+  if (currentPage > 1) {
+    showPage(currentPage - 1);
+  }
+});
+</script>
+
+</body>
+</html>
